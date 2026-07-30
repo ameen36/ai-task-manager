@@ -1,0 +1,312 @@
+/* ==========================================
+   Microsoft To Do Clone - App.css
+========================================== */
+
+/* ---------- Global ---------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f3f2f1;
+  color: #323130;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* ---------- App Layout ---------- */
+
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  width: 280px;
+  background: #ffffff;
+  border-right: 1px solid #e5e5e5;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Sidebar Profile ---------- */
+
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 22px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid #ececec;
+}
+
+.profile-icon {
+  font-size: 48px;
+  color: #2564cf;
+}
+
+.sidebar-profile h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.sidebar-profile p {
+  font-size: 13px;
+  color: #777;
+}
+
+/* ---------- Sidebar Menu ---------- */
+
+.sidebar nav ul {
+  list-style: none;
+}
+
+.sidebar nav li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+  font-size: 15px;
+}
+
+.sidebar nav li:hover {
+  background: #edf4ff;
+  color: #2564cf;
+}
+
+.sidebar nav li.active {
+  background: #2564cf;
+  color: white;
+  font-weight: 600;
+}
+
+/* ---------- Home ---------- */
+
+.home {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.home-header {
+  margin-bottom: 30px;
+}
+
+.home-header h1 {
+  font-size: 42px;
+  color: #2564cf;
+}
+
+.home-header p {
+  margin-top: 6px;
+  color: #666;
+}
+
+/* ---------- Task Container ---------- */
+
+.task-container {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Add Task ---------- */
+
+.add-task-form {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border-bottom: 1px solid #ececec;
+}
+
+.add-icon {
+  color: #2564cf;
+  font-size: 18px;
+}
+
+.add-task-input {
+  flex: 1;
+  border: 1px solid #ddd;
+  background: #f6f7f9;
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 15px;
+  outline: none;
+}
+
+.add-task-input:focus {
+  border-color: #2564cf;
+  background: white;
+}
+
+.add-task-form button {
+  border: none;
+  background: #2564cf;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.add-task-form button:hover {
+  background: #1d4fa8;
+}
+
+/* ---------- Task List ---------- */
+
+.task-list {
+  width: 100%;
+}
+
+.empty-task {
+  padding: 30px;
+  text-align: center;
+  color: #888;
+}
+
+/* ---------- Task Item ---------- */
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid #ececec;
+  transition: 0.25s;
+}
+
+.task-item:last-child {
+  border-bottom: none;
+}
+
+.task-item:hover {
+  background: #f8f9fb;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.task-left input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.task-left span {
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.completed {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.star-btn,
+.delete-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.25s;
+  opacity: 0;
+}
+
+.task-item:hover .star-btn,
+.task-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.star-btn {
+  color: #c5c5c5;
+}
+
+.star-btn:hover {
+  color: #f4b400;
+  background: rgba(244, 180, 0, 0.12);
+}
+
+.delete-btn {
+  color: #d13438;
+}
+
+.delete-btn:hover {
+  background: rgba(209, 52, 56, 0.12);
+}
+
+.star-btn svg,
+.delete-btn svg {
+  pointer-events: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 230px;
+  }
+
+  .home {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .home {
+    padding: 20px;
+  }
+
+  .home-header h1 {
+    font-size: 34px;
+  }
+
+  .add-task-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-task-form button {
+    width: 100%;
+  }
+
+  .task-item {
+    padding: 16px;
+  }
+}

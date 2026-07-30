@@ -1,0 +1,94 @@
+.dashboard {
+  margin: 25px 0;
+}
+
+.dashboard h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #323130;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+.dashboard-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+  border: 1px solid #ececec;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #666;
+  font-weight: 500;
+}
+
+.dashboard-card p {
+  margin-top: 12px;
+  font-size: 34px;
+  font-weight: bold;
+  color: #0078d4;
+}
+
+.progress-section {
+  margin-top: 35px;
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.progress-section h3 {
+  margin-bottom: 18px;
+  color: #323130;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  background: #e5e5e5;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0078d4, #00b7ff);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.progress-section p {
+  margin-top: 12px;
+  font-weight: 600;
+  color: #444;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card p {
+    font-size: 28px;
+  }
+}
