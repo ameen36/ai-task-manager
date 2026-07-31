@@ -1,15 +1,24 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   FaSun,
   FaStar,
   FaTasks,
   FaUserCircle,
   FaMoon,
+  FaSignOutAlt,
 } from "react-icons/fa";
+
 import { useTheme } from "../../context/ThemeContext";
+import { logout } from "../../services/api";
 
 function Sidebar() {
   const { darkMode, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
   return (
     <aside className="sidebar">
@@ -57,6 +66,14 @@ function Sidebar() {
           <span>
             {darkMode ? "Light Mode" : "Dark Mode"}
           </span>
+        </button>
+
+        <button
+          className="logout-btn"
+          onClick={handleLogout}
+        >
+          <FaSignOutAlt />
+          <span>Logout</span>
         </button>
       </div>
     </aside>

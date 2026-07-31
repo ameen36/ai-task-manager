@@ -774,3 +774,29 @@ input:focus {
   color: #a4262c;
   font-weight: 600;
 }
+
+/* ===========================
+   LOGOUT BUTTON
+=========================== */
+
+.logout-btn {
+  width: 100%;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #d13438;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: #a4262c;
+}
