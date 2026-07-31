@@ -2,21 +2,29 @@
 
 A modern full-stack task management application inspired by Microsoft To Do, built with React, Go (Gin), MongoDB, and JWT Authentication.
 
+## 📌 Overview
+
+AI Task Manager is a full-stack productivity application designed to help users organize, prioritize, and manage daily tasks efficiently. It provides secure authentication, task categorization, dashboards, and a scalable architecture for future AI-powered productivity features.
+
+---
+
 ## ✨ Features
 
-- 🔐 Secure User Authentication (JWT)
+- 🔐 Secure JWT Authentication
 - 👤 User Registration & Login
 - ✅ Create, Update & Delete Tasks
 - 📊 Dashboard with Task Statistics
 - 🔍 Search Tasks
-- ⭐ Priority Management
-- 📂 Category Management
+- ⭐ Priority Levels (High, Medium, Low)
+- 📂 Categories
 - 📅 Due Dates
-- 🔒 User-specific Task Management
-- ⚡ RESTful API
-- 🎨 Modern React UI
+- 👥 User-specific Task Management
+- ⚡ RESTful API using Gin Framework
+- ☁️ MongoDB Atlas Integration
 
-## 🛠 Tech Stack
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
 - React.js
@@ -32,27 +40,38 @@ A modern full-stack task management application inspired by Microsoft To Do, bui
 ### Database
 - MongoDB Atlas
 
-## 📂 Project Structure
+---
+
+## 📁 Project Structure
 
 ```
 ai-task-manager/
 │
 ├── backend/
 │   ├── controllers/
-│   ├── models/
-│   ├── routes/
+│   ├── database/
 │   ├── middleware/
-│   └── database/
+│   ├── models/
+│   └── routes/
 │
 ├── frontend/
 │   ├── src/
 │   ├── components/
 │   └── services/
 │
+├── .gitignore
 └── README.md
 ```
 
+---
+
 ## 🚀 Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/ameen36/ai-task-manager.git
+```
 
 ### Backend
 
@@ -70,22 +89,26 @@ npm install
 npm run dev
 ```
 
-## 🔮 Upcoming Features
+---
+
+## 🔮 Planned Features
 
 - 🤖 AI Task Assistant
 - 🎤 Voice Commands
 - 🌙 Dark Mode
-- 🔔 Notifications
-- 📎 File Attachments
-- 📈 Analytics
 - 📅 Calendar View
+- 🔔 Notifications & Reminders
+- 📎 File Attachments
+- 📈 Productivity Analytics
+
+---
 
 ## 👨‍💻 Author
 
 **Sheikh Ameen**
 
-Software Architect | Full Stack Developer
+Software Architect
 
 ---
 
-⭐ If you like this project, consider giving it a star.
+⭐ If you found this project useful, consider giving it a star.
