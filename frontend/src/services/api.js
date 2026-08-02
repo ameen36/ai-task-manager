@@ -87,3 +87,23 @@ export async function deleteTask(id) {
 
   return response.json();
 }
+// -------------------- PROFILE --------------------
+
+export async function getProfile() {
+  const response = await fetch(`${API_URL}/profile`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
+
+  return response.json();
+}
+
+export async function updateProfile(profile) {
+  const response = await fetch(`${API_URL}/profile`, {
+    method: "PUT",
+    headers: getHeaders(),
+    body: JSON.stringify(profile),
+  });
+
+  return response.json();
+}

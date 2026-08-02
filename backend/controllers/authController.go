@@ -129,3 +129,87 @@ func Login(c *gin.Context) {
 		"token":   tokenString,
 	})
 }
+
+func GetProfile(c *gin.Context) {
+
+	userID := c.MustGet("userId").(string)
+
+	objectID, err := bson.ObjectIDFromHex(userID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid user ID",
+		})
+		return
+	}
+
+	collection := database.Client.Database("todo").Collection("users")
+
+	var user models.User
+
+	err = collection.FindOne(
+		context.Background(),
+		bson.M{
+			"_id": objectID,
+		},
+	).Decode(&user)
+
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "User not found",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"id":    user.ID.Hex(),
+		"name":  user.Name,
+		"email": user.Email,
+	})
+}
+func UpdateProfile(c *gin.Context) {
+
+	userID := c.MustGet("userId").(string)
+
+	objectID, err := bson.ObjectIDFromHex(userID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid user ID",
+		})
+		return
+	}
+
+	var updatedUser models.User
+
+	if err := c.ShouldBindJSON(&updatedUser); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	collection := database.Client.Database("todo").Collection("users")
+
+	update := bson.M{
+		"$set": bson.M{
+			"name":  updatedUser.Name,
+			"email": updatedUser.Email,
+		},
+	}
+
+	_, err = collection.UpdateOne(
+		context.Background(),
+		bson.M{"_id": objectID},
+		update,
+	)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to update profile",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Profile updated successfully",
+	})
+}

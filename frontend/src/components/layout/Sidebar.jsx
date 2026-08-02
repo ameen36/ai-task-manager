@@ -6,13 +6,17 @@ import {
   FaUserCircle,
   FaMoon,
   FaSignOutAlt,
+  FaUser,
 } from "react-icons/fa";
 
 import { useTheme } from "../../context/ThemeContext";
+import { useUser } from "../../context/UserContext";
 import { logout } from "../../services/api";
 
 function Sidebar() {
   const { darkMode, toggleTheme } = useTheme();
+  const { user } = useUser();
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -25,7 +29,7 @@ function Sidebar() {
       <div className="sidebar-profile">
         <FaUserCircle size={60} />
 
-        <h3>Sheikh Ameen</h3>
+        <h3>{user.name || "User"}</h3>
 
         <p>Welcome back 👋</p>
       </div>
@@ -55,6 +59,14 @@ function Sidebar() {
           <FaTasks />
           <span>Tasks</span>
         </NavLink>
+
+        <NavLink
+          to="/profile"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
+          <FaUser />
+          <span>Profile</span>
+        </NavLink>
       </nav>
 
       <div className="sidebar-footer">
@@ -63,6 +75,7 @@ function Sidebar() {
           onClick={toggleTheme}
         >
           {darkMode ? <FaSun /> : <FaMoon />}
+
           <span>
             {darkMode ? "Light Mode" : "Dark Mode"}
           </span>
