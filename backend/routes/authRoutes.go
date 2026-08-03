@@ -22,4 +22,10 @@ func SetupAuthRoutes(router *gin.Engine) {
 		middleware.AuthMiddleware(),
 		controllers.UpdateProfile,
 	)
+
+	router.PUT(
+		"/change-password",
+		middleware.AuthMiddleware(),
+		controllers.ChangePassword,
+	)
 }

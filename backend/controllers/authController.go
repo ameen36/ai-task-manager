@@ -213,3 +213,110 @@ func UpdateProfile(c *gin.Context) {
 		"message": "Profile updated successfully",
 	})
 }
+
+func ChangePassword(c *gin.Context) {
+
+	userID := c.MustGet("userId").(string)
+
+	objectID, err := bson.ObjectIDFromHex(userID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid user ID",
+		})
+		return
+	}
+
+	var request struct {
+		CurrentPassword string `json:"currentPassword"`
+		NewPassword     string `json:"newPassword"`
+	}
+
+	if err := c.ShouldBindJSON(&request); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid request",
+		})
+		return
+	}
+
+	if request.CurrentPassword == "" || request.NewPassword == "" {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Current password and new password are required",
+		})
+		return
+	}
+
+	if len(request.NewPassword) < 8 {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "New password must be at least 8 characters",
+		})
+		return
+	}
+
+	collection := database.Client.Database("todo").Collection("users")
+
+	var user models.User
+
+	err = collection.FindOne(
+		context.Background(),
+		bson.M{"_id": objectID},
+	).Decode(&user)
+
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "User not found",
+		})
+		return
+	}
+
+	err = bcrypt.CompareHashAndPassword(
+		[]byte(user.Password),
+		[]byte(request.CurrentPassword),
+	)
+
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"error": "Current password is incorrect",
+		})
+		return
+	}
+
+	if request.CurrentPassword == request.NewPassword {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "New password must be different from current password",
+		})
+		return
+	}
+
+	hashedPassword, err := bcrypt.GenerateFromPassword(
+		[]byte(request.NewPassword),
+		bcrypt.DefaultCost,
+	)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to process new password",
+		})
+		return
+	}
+
+	_, err = collection.UpdateOne(
+		context.Background(),
+		bson.M{"_id": objectID},
+		bson.M{
+			"$set": bson.M{
+				"password": string(hashedPassword),
+			},
+		},
+	)
+
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Failed to change password",
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Password changed successfully",
+	})
+}

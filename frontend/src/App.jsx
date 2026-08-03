@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Important from "./pages/Important";
 import Tasks from "./pages/Tasks";
 import Profile from "./pages/Profile";
+import ChangePassword from "./pages/ChangePassword";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -34,7 +35,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         <Route
           path="/"
           element={
@@ -79,9 +79,19 @@ function App() {
           }
         />
 
+        <Route
+          path="/change-password"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <ChangePassword />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
       </Routes>
     </BrowserRouter>
   );

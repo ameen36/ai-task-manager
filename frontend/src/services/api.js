@@ -49,6 +49,16 @@ export function isLoggedIn() {
   return !!localStorage.getItem("token");
 }
 
+export async function changePassword(passwords) {
+  const response = await fetch(`${API_URL}/change-password`, {
+    method: "PUT",
+    headers: getHeaders(),
+    body: JSON.stringify(passwords),
+  });
+
+  return response.json();
+}
+
 // -------------------- TASKS --------------------
 
 export async function getTasks() {
