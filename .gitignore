@@ -26,3 +26,6 @@ Thumbs.db
 
 # IDE
 .idea/
+
+# Environment variables
+backend/.env

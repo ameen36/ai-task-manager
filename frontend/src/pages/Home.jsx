@@ -3,7 +3,7 @@ import { getTasks } from "../services/api";
 import AddTask from "../components/tasks/AddTask";
 import TaskList from "../components/tasks/TaskList";
 import SearchBar from "../components/tasks/SearchBar";
-import Dashboard from "../components/dashboard/Dashboard";
+import Dashboard from "../components/Dashboard/Dashboard";
 import { sortTasks } from "../utils/taskSorter";
 
 function Home() {

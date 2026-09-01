@@ -1,94 +1,350 @@
+/* ========================================
+   DASHBOARD
+======================================== */
+
 .dashboard {
-  margin: 25px 0;
+  margin: 28px 0;
 }
 
-.dashboard h2 {
-  margin-bottom: 20px;
-  font-size: 26px;
-  font-weight: 600;
-  color: #323130;
+/* ========================================
+   DASHBOARD HEADING
+======================================== */
+
+.dashboard-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
 }
 
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 18px;
-}
-
-.dashboard-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-  transition: all 0.25s ease;
-  border: 1px solid #ececec;
-}
-
-.dashboard-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-card h3 {
+.dashboard-heading h2 {
   margin: 0;
-  font-size: 15px;
-  color: #666;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 700;
+  color: #242424;
 }
 
-.dashboard-card p {
-  margin-top: 12px;
-  font-size: 34px;
-  font-weight: bold;
+.dashboard-heading p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+/* ========================================
+   PROGRESS CIRCLE
+======================================== */
+
+.dashboard-progress-circle {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 5px solid #0078d4;
+  border-radius: 50%;
+
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.dashboard-progress-circle span {
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
   color: #0078d4;
 }
 
-.progress-section {
-  margin-top: 35px;
-  background: white;
-  border-radius: 16px;
-  padding: 22px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+.dashboard-progress-circle small {
+  margin-top: 4px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #666666;
 }
 
-.progress-section h3 {
-  margin-bottom: 18px;
-  color: #323130;
+/* ========================================
+   STATISTICS GRID
+======================================== */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
+
+/* ========================================
+   DASHBOARD CARD
+======================================== */
+
+.dashboard-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  min-height: 112px;
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #d5d5d5;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   CARD ICON
+======================================== */
+
+.dashboard-card-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  background: #f0f6ff;
+  color: #0078d4;
+}
+
+/* ========================================
+   CARD CONTENT
+======================================== */
+
+.dashboard-card-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dashboard-card-content span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666666;
+}
+
+.dashboard-card-content strong {
+  margin-top: 7px;
+
+  font-size: 32px;
+  line-height: 1;
+
+  font-weight: 700;
+  color: #242424;
+}
+
+/* ========================================
+   CARD VARIATIONS
+======================================== */
+
+.completed-card .dashboard-card-icon {
+  background: #eaf7ef;
+  color: #16834b;
+}
+
+.pending-card .dashboard-card-icon {
+  background: #fff7e6;
+  color: #d98200;
+}
+
+.important-card .dashboard-card-icon {
+  background: #fff4e5;
+  color: #d97706;
+}
+
+.today-card .dashboard-card-icon {
+  background: #eef4ff;
+  color: #365fc7;
+}
+
+.overdue-card .dashboard-card-icon {
+  background: #fff0f0;
+  color: #d13438;
+}
+
+.overdue-card .dashboard-card-content strong {
+  color: #d13438;
+}
+
+/* ========================================
+   PROGRESS SECTION
+======================================== */
+
+.progress-section {
+  margin-top: 24px;
+
+  padding: 22px;
+
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ========================================
+   PROGRESS HEADER
+======================================== */
+
+.progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-bottom: 17px;
+}
+
+.progress-header h3 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 650;
+
+  color: #242424;
+}
+
+.progress-header p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  color: #666666;
+}
+
+.progress-header > strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0078d4;
+}
+
+/* ========================================
+   PROGRESS BAR
+======================================== */
 
 .progress-bar {
   width: 100%;
-  height: 14px;
-  background: #e5e5e5;
+  height: 12px;
+
+  background: #eeeeee;
+
   border-radius: 999px;
+
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #0078d4, #00b7ff);
+
+  background: linear-gradient(
+    90deg,
+    #0078d4,
+    #2aa9ff
+  );
+
   border-radius: 999px;
+
   transition: width 0.5s ease;
 }
 
-.progress-section p {
-  margin-top: 12px;
-  font-weight: 600;
-  color: #444;
-}
+/* ========================================
+   TABLET
+======================================== */
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .dashboard-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 500px) {
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 550px) {
+  .dashboard {
+    margin: 20px 0;
+  }
+
+  .dashboard-heading {
+    align-items: flex-start;
+  }
+
+  .dashboard-heading h2 {
+    font-size: 22px;
+  }
+
+  .dashboard-heading p {
+    font-size: 13px;
+  }
+
+  .dashboard-progress-circle {
+    width: 56px;
+    height: 56px;
+    border-width: 4px;
+  }
+
+  .dashboard-progress-circle span {
+    font-size: 13px;
+  }
+
   .dashboard-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .dashboard-card p {
+  .dashboard-card {
+    min-height: 92px;
+    padding: 17px;
+  }
+
+  .dashboard-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    font-size: 19px;
+  }
+
+  .dashboard-card-content strong {
     font-size: 28px;
+  }
+
+  .progress-section {
+    padding: 18px;
+  }
+
+  .progress-header {
+    align-items: flex-start;
+  }
+
+  .progress-header > strong {
+    font-size: 18px;
   }
 }

@@ -12,6 +12,15 @@ type SubTask struct {
 	Completed bool          `bson:"completed" json:"completed"`
 }
 
+// Recurrence defines how a task repeats.
+type Recurrence struct {
+	Enabled    bool       `bson:"enabled" json:"enabled"`
+	Frequency  string     `bson:"frequency,omitempty" json:"frequency,omitempty"`
+	Interval   int        `bson:"interval,omitempty" json:"interval,omitempty"`
+	DaysOfWeek []string   `bson:"daysOfWeek,omitempty" json:"daysOfWeek,omitempty"`
+	EndDate    *time.Time `bson:"endDate,omitempty" json:"endDate,omitempty"`
+}
+
 type Task struct {
 	ID     bson.ObjectID `bson:"_id,omitempty" json:"id"`
 	UserID string        `bson:"userId" json:"userId"`
@@ -24,5 +33,10 @@ type Task struct {
 	Priority string     `bson:"priority,omitempty" json:"priority,omitempty"`
 	Category string     `bson:"category,omitempty" json:"category,omitempty"`
 
+	// Notes contains additional information about the task.
+	Notes string `bson:"notes,omitempty" json:"notes,omitempty"`
+
 	SubTasks []SubTask `bson:"subTasks,omitempty" json:"subTasks,omitempty"`
+
+	Recurrence *Recurrence `bson:"recurrence,omitempty" json:"recurrence,omitempty"`
 }

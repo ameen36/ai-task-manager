@@ -3,10 +3,12 @@ import {
   FaSun,
   FaStar,
   FaTasks,
+  FaCalendarAlt,
+  FaRobot,
   FaUserCircle,
   FaMoon,
   FaSignOutAlt,
-  FaUser,
+  FaCog,
 } from "react-icons/fa";
 
 import { useTheme } from "../../context/ThemeContext";
@@ -26,69 +28,130 @@ function Sidebar() {
 
   return (
     <aside className="sidebar">
+
+      {/* PROFILE */}
+
       <div className="sidebar-profile">
         <FaUserCircle size={60} />
 
-        <h3>{user.name || "User"}</h3>
-
-        <p>Welcome back 👋</p>
+        <div>
+          <h3>{user?.name || "User"}</h3>
+          <p>Welcome back 👋</p>
+        </div>
       </div>
 
+      {/* MAIN NAVIGATION */}
+
       <nav className="sidebar-nav">
+
+        {/* MY DAY */}
+
         <NavLink
           to="/"
           end
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) =>
+            isActive ? "active" : ""
+          }
         >
           <FaSun />
           <span>My Day</span>
         </NavLink>
 
+        {/* IMPORTANT */}
+
         <NavLink
           to="/important"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) =>
+            isActive ? "active" : ""
+          }
         >
           <FaStar />
           <span>Important</span>
         </NavLink>
 
+        {/* TASKS */}
+
         <NavLink
           to="/tasks"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          className={({ isActive }) =>
+            isActive ? "active" : ""
+          }
         >
           <FaTasks />
           <span>Tasks</span>
         </NavLink>
 
+        {/* CALENDAR */}
+
         <NavLink
-          to="/profile"
-          className={({ isActive }) => (isActive ? "active" : "")}
+          to="/calendar"
+          className={({ isActive }) =>
+            isActive ? "active" : ""
+          }
         >
-          <FaUser />
-          <span>Profile</span>
+          <FaCalendarAlt />
+          <span>Calendar</span>
         </NavLink>
+
+        {/* AI SUGGESTIONS */}
+
+        <NavLink
+          to="/ai-suggestions"
+          className={({ isActive }) =>
+            isActive ? "active" : ""
+          }
+        >
+          <FaRobot />
+          <span>AI Suggestions</span>
+        </NavLink>
+
+        {/* SETTINGS */}
+
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            isActive ? "active" : ""
+          }
+        >
+          <FaCog />
+          <span>Settings</span>
+        </NavLink>
+
       </nav>
 
+      {/* SIDEBAR FOOTER */}
+
       <div className="sidebar-footer">
+
+        {/* THEME */}
+
         <button
+          type="button"
           className="theme-toggle-btn"
           onClick={toggleTheme}
         >
           {darkMode ? <FaSun /> : <FaMoon />}
 
           <span>
-            {darkMode ? "Light Mode" : "Dark Mode"}
+            {darkMode
+              ? "Light Mode"
+              : "Dark Mode"}
           </span>
         </button>
 
+        {/* LOGOUT */}
+
         <button
+          type="button"
           className="logout-btn"
           onClick={handleLogout}
         >
           <FaSignOutAlt />
           <span>Logout</span>
         </button>
+
       </div>
+
     </aside>
   );
 }

@@ -45,8 +45,10 @@ func main() {
 		})
 	})
 
+	// Setup routes
 	routes.SetupTaskRoutes(router)
 	routes.SetupAuthRoutes(router)
 
+	// Start server
 	router.Run(":8080")
 }

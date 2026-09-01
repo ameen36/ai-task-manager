@@ -28,4 +28,14 @@ func SetupAuthRoutes(router *gin.Engine) {
 		middleware.AuthMiddleware(),
 		controllers.ChangePassword,
 	)
+
+	router.POST(
+		"/forgot-password",
+		controllers.ForgotPassword,
+	)
+
+	router.POST(
+		"/reset-password",
+		controllers.ResetPassword,
+	)
 }
