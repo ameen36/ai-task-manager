@@ -1,114 +1,164 @@
-# 🚀 AI Task Manager
+# AI Task Manager
 
-A modern full-stack task management application inspired by Microsoft To Do, built with React, Go (Gin), MongoDB, and JWT Authentication.
+A modern full-stack task management application designed to help users organize, prioritize, schedule, and manage their daily tasks efficiently.
 
-## 📌 Overview
-
-AI Task Manager is a full-stack productivity application designed to help users organize, prioritize, and manage daily tasks efficiently. It provides secure authentication, task categorization, dashboards, and a scalable architecture for future AI-powered productivity features.
+The application provides secure authentication, recurring tasks, task categorization, notes, file attachments, calendar management, notifications, AI-powered suggestions, and a responsive productivity dashboard.
 
 ---
 
 ## ✨ Features
 
-- 🔐 Secure JWT Authentication
-- 👤 User Registration & Login
-- ✅ Create, Update & Delete Tasks
-- 📊 Dashboard with Task Statistics
-- 🔍 Search Tasks
-- ⭐ Priority Levels (High, Medium, Low)
-- 📂 Categories
-- 📅 Due Dates
-- 👥 User-specific Task Management
-- ⚡ RESTful API using Gin Framework
-- ☁️ MongoDB Atlas Integration
+### 🔐 Authentication & Account Management
+
+- Secure JWT-based authentication
+- User registration and login
+- Protected routes
+- User profile management
+- Change password
+- Forgot password
+- Password reset workflow
+
+### ✅ Task Management
+
+- Create, update, and delete tasks
+- Mark tasks as completed
+- Mark tasks as important
+- Search tasks
+- Priority levels:
+  - High
+  - Medium
+  - Low
+- Task categories:
+  - Personal
+  - Work
+  - Study
+  - Health
+  - Shopping
+  - Others
+- Due dates
+- Task notes
+- Subtasks
+
+### 🔁 Recurring Tasks
+
+- Daily recurrence
+- Weekly recurrence
+- Monthly recurrence
+- Yearly recurrence
+- Custom repeat intervals
+- Weekly day selection
+- Optional recurrence end dates
+
+### 📎 File Attachments
+
+- Upload files to tasks
+- Store task attachments
+- Download attachments
+- Secure attachment access
+
+### 📅 Calendar
+
+- Calendar-based task view
+- View tasks according to due dates
+- Navigate between dates
+- Access scheduled tasks from the calendar
+
+### 🔔 Notifications
+
+- Notification center
+- Task-related notifications
+- Notification management
+
+### 🤖 AI Suggestions
+
+- AI-powered productivity suggestions
+- Task-oriented recommendations
+- Dedicated AI Suggestions section
+
+### 📊 Dashboard
+
+- Overall task progress
+- Completed task statistics
+- Task overview
+- Productivity information
+- Quick access to important tasks
+
+### ⚙️ Settings
+
+Centralized settings area for:
+
+- Profile
+- Password management
+- Notifications
+- Appearance preferences
+
+### 🎨 User Interface
+
+- Responsive React interface
+- Dark mode / light mode
+- Modern sidebar navigation
+- Search functionality
+- Priority and category indicators
+- Clean task cards
+- Responsive dashboard layout
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Technology Stack
 
 ### Frontend
-- React.js
+
+- React 19
+- React Router
+- Vite
+- React Icons
 - JavaScript
 - CSS
 
 ### Backend
-- Go (Golang)
-- Gin Framework
-- JWT Authentication
-- bcrypt
+
+- Go 1.26.4
+- Gin Web Framework
+- RESTful API architecture
+- JWT authentication
+- MongoDB Go Driver
 
 ### Database
+
+- MongoDB
 - MongoDB Atlas
 
----
+### Infrastructure & Tools
 
-## 📁 Project Structure
-
-```
-ai-task-manager/
-│
-├── backend/
-│   ├── controllers/
-│   ├── database/
-│   ├── middleware/
-│   ├── models/
-│   └── routes/
-│
-├── frontend/
-│   ├── src/
-│   ├── components/
-│   └── services/
-│
-├── .gitignore
-└── README.md
-```
+- Docker
+- Docker Compose
+- Nginx
+- Git
+- GitHub
+- Visual Studio Code
+- Postman
 
 ---
 
-## 🚀 Getting Started
+## 🏛️ Architecture
 
-### Clone the repository
+The application follows a full-stack architecture:
 
-```bash
-git clone https://github.com/ameen36/ai-task-manager.git
-```
-
-### Backend
-
-```bash
-cd backend
-go mod tidy
-go run main.go
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
----
-
-## 🔮 Planned Features
-
-- 🤖 AI Task Assistant
-- 🎤 Voice Commands
-- 🌙 Dark Mode
-- 📅 Calendar View
-- 🔔 Notifications & Reminders
-- 📎 File Attachments
-- 📈 Productivity Analytics
-
----
-
-## 👨‍💻 Author
-
-**Sheikh Ameen**
-
-Software Architect
-
----
-
-⭐ If you found this project useful, consider giving it a star.
+```text
+                    ┌─────────────────────┐
+                    │      React UI       │
+                    │     Vite Frontend   │
+                    └──────────┬──────────┘
+                               │
+                               │ REST API
+                               ▼
+                    ┌─────────────────────┐
+                    │      Go + Gin       │
+                    │       Backend       │
+                    └──────────┬──────────┘
+                               │
+                               ▼
+                    ┌─────────────────────┐
+                    │      MongoDB        │
+                    │     MongoDB Atlas   │
+                    └─────────────────────┘
