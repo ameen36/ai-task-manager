@@ -117,3 +117,76 @@ export async function updateProfile(profile) {
 
   return response.json();
 }
+export async function resetPassword(token, newPassword) {
+  const response = await fetch(`${API_URL}/reset-password`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      token,
+      newPassword,
+    }),
+  });
+
+  return response.json();
+}
+
+// -------------------- ATTACHMENTS --------------------
+
+export async function getAttachments(taskId) {
+  const response = await fetch(
+    `${API_URL}/tasks/${taskId}/attachments`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: getHeaders().Authorization,
+      },
+    }
+  );
+
+  return response.json();
+}
+
+export async function uploadAttachment(taskId, file) {
+  const formData = new FormData();
+
+  formData.append("file", file);
+
+  const response = await fetch(
+    `${API_URL}/tasks/${taskId}/attachments`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: getHeaders().Authorization,
+      },
+      body: formData,
+    }
+  );
+
+  return response.json();
+}
+
+export async function deleteAttachment(
+  taskId,
+  attachmentId
+) {
+  const response = await fetch(
+    `${API_URL}/tasks/${taskId}/attachments/${attachmentId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: getHeaders().Authorization,
+      },
+    }
+  );
+
+  return response.json();
+}
+
+export function getAttachmentUrl(
+  taskId,
+  attachmentId
+) {
+  return `${API_URL}/tasks/${taskId}/attachments/${attachmentId}`;
+}
