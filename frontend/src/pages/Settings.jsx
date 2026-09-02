@@ -3,10 +3,15 @@ import {
   FaLock,
   FaBell,
   FaPalette,
+  FaSun,
+  FaMoon,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 function Settings() {
+  const { darkMode, toggleTheme } = useTheme();
+
   return (
     <div className="page settings-page">
 
@@ -79,7 +84,17 @@ function Settings() {
 
         {/* APPEARANCE */}
 
-        <div className="settings-card settings-card-disabled">
+        <div
+          className="settings-card"
+          onClick={toggleTheme}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              toggleTheme();
+            }
+          }}
+        >
           <div className="settings-card-icon">
             <FaPalette />
           </div>
@@ -88,12 +103,20 @@ function Settings() {
             <h3>Appearance</h3>
 
             <p>
-              Theme and appearance settings.
+              Switch between light and dark mode.
             </p>
           </div>
 
           <span className="settings-coming-soon">
-            Available
+            {darkMode ? (
+              <>
+                <FaMoon /> Dark
+              </>
+            ) : (
+              <>
+                <FaSun /> Light
+              </>
+            )}
           </span>
         </div>
 
