@@ -20,6 +20,7 @@ func main() {
 		AllowOrigins: []string{
 			"http://localhost:5173",
 			"http://localhost:3000",
+			"https://ai-task-manager-1-298e.onrender.com",
 		},
 		AllowMethods: []string{
 			"GET",
